@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 14px;
+}
+header {    
+    background: #FFC000;
+    background: linear-gradient(90deg,rgba(255, 192, 0, 1) 0%, rgba(255, 206, 56, 1) 59%, rgba(255, 255, 255, 1) 100%);
+    color: #0f0f0f;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+h1 {
+    font-size: 1.7em;
+}   
+main {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+}
+.container {
+    width: 85%;
+    display: flex;
+    height: 100%;
+}
+.col {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+img{
+    display: block;
+    max-width: 80%;
+    height: auto;
+    object-fit: contain; /* ou 'cover' se quiser preencher */
+}
+.form {
+    text-align: center;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+form {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+}
+select {
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0 10px 5px;
+}
+select:focus {
+    border-color: #FFC000;
+}
+button {
+    background-color: #FFC000;
+    color: #0f0f0f;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    transition: 0.8s ease;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+button:hover {
+    background-color: #0f0f0f;
+    color: #FFC000;
+    cursor: pointer;
+}
+.resultados {
+    width: 100%;
+    height: auto;
+    background-color: #ffffff; 
+    border-radius: 10px;
+    padding: 10px;
+}
+.resultados h2 {
+    margin-bottom: 10px;
+}
+
+.resultados h3{
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+.resultados p{
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+footer {
+    background: #FFC000;
+    background: linear-gradient(90deg,rgba(255, 192, 0, 1) 0%, rgba(255, 206, 56, 1) 59%, rgba(255, 255, 255, 1) 100%);
+    color: #0f0f0f;
+    font-size: 0.8em;
+    padding: 5px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

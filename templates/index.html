@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distância entre as capitais brasileiras</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Distância entre as capitais brasileiras</h1>
+    </header>
+    <main>
+        <div class="container">
+            <div class="col">
+                    <img src="{{ url_for('static', filename='img/mapa.png') }}" alt="Mapa do Brasil com as capitais">
+            </div>
+
+            <div class="col">
+                <div class="form">
+                    <h3>Selecione as capitais</h3>
+                    <form action="/" method="post">
+                        <!-- <label for="origem">Origem</label> -->
+                        <select name="origem" id="origem" required >
+                            <option value="" disabled selected>Selecione a origem</option>
+                            {% for capital in capitais %}
+                            <option value="{{ capital }}">{{ capital }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="para">para</label>
+                        <select name="destino" id="destino" required>
+                            <option value="" disabled selected>Selecione o destino</option>
+                            {% for capital in capitais %}
+                            <option value="{{ capital }}">{{ capital }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit">Calcular Distância</button>
+                    </form>
+                </div>
+                {% if resultados %}
+                <div class="resultados">
+                    <h2>Resultados de {{ origem }} até {{ destino }}</h2>
+                    <h3>{{ resultados[0][0] }}</h3>
+                    <p>Cidades do trajeto escolhido: {{resultados[0][1] | join(', ') }}.</p>
+                    <p>Distância do trajeto: {{resultados[0][2] }} Km.</p>
+                    <p>Total de cidades visitadas pelo método: {{resultados[0][3] }} cidades.</p>
+                    <hr>
+                    <h3>{{ resultados[1][0] }}</h3>
+                    <p>Cidades do trajeto escolhido: {{resultados[1][1] | join(', ') }}.</p>
+                    <p>Distância do trajeto: {{resultados[1][2] }} Km.</p>
+                    <p>Total de cidades visitadas pelo método: {{resultados[1][3] }} cidades.</p>
+                    <hr>
+                </div>
+                {% endif %}
+        </div>
+    </main>
+    <footer>
+        <p>Desenvolvido por Gabriel, João Paulo e Maíra</p>
+        <p>Trabalho I - Métodos de Busca - Disciplina Inteligência Artificial - Programa de Mestrado - Prof. Dr. André
+            L. Koerich</p>
+        <p>Universidade Técnológica Federal do Paraná</p>
+        <p>2025</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
