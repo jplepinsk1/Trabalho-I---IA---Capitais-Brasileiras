@@ -115,7 +115,8 @@ button:hover {
     margin-bottom: 5px;
 }
 .resultados hr {
-    border: 1px solid gray
+    border: 1px solid gray;
+    margin-bottom: 10px;
 }
 footer {
     background: #FFC000;
