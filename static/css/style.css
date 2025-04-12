@@ -15,7 +15,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-size: 14px;
+    font-size: 16px;
 }
 header {    
     background: #FFC000;
@@ -113,6 +113,9 @@ button:hover {
 .resultados p{
     margin-left: 15px;
     margin-bottom: 5px;
+}
+.resultados hr {
+    border: 1px solid gray
 }
 footer {
     background: #FFC000;

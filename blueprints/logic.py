@@ -2,6 +2,14 @@ from collections import deque
 import heapq
 from blueprints.grafo import mapa
 
+# Heurística estimada (distância em linha reta até Salvador)
+heuristica = {
+    'Aracaju': 356,
+    'Salvador': 0,
+    'Maceió': 632,
+    'Recife': 800,
+    'Brasília': 1440,
+}
 
 def busca_largura(mapa, origem, destino):
     fila = deque([(origem, [origem], 0)])
@@ -29,21 +37,23 @@ def busca_profundidade(mapa, origem, destino):
                 pilha.append((vizinho, caminho + [vizinho], custo + distancia))
     return None, float('inf'), len(visitados)
 
-# def busca_a_estrela(mapa, heuristica, origem, destino):
-#     fila = [(heuristica.get(origem, 0), 0, origem, [origem])]
-#     visitados = set()
-#     while fila:
-#         f, g, atual, caminho = heapq.heappop(fila)
-#         if atual == destino:
-#             return caminho, g, len(visitados)
-#         if atual in visitados:
-#             continue
-#         visitados.add(atual)
-#         for vizinho, distancia in mapa[atual].items():
-#             novo_g = g + distancia
-#             novo_f = novo_g + heuristica.get(vizinho, 0)
-#             heapq.heappush(fila, (novo_f, novo_g, vizinho, caminho + [vizinho]))
-#     return None, float('inf'), len(visitados)
+def busca_a_estrela(mapa, heuristica, origem, destino):
+    fila = [(heuristica.get(origem, 0), 0, origem, [origem])]
+    visitados = set()
+    while fila:
+        f, g, atual, caminho = heapq.heappop(fila)
+        if atual == destino:
+            return caminho, g, len(visitados)
+        if atual in visitados:
+            continue
+        visitados.add(atual)
+        for vizinho, distancia in mapa[atual].items():
+            novo_g = g + distancia
+            novo_f = novo_g + heuristica.get(vizinho, 0)
+            heapq.heappush(fila, (novo_f, novo_g, vizinho, caminho + [vizinho]))
+    return None, float('inf'), len(visitados)
+
+
 
 def executar_buscas(origem, destino):
     resultados = []
@@ -53,8 +63,8 @@ def executar_buscas(origem, destino):
     caminho, custo, visitados = busca_profundidade(mapa, origem, destino)
     resultados.append(("Busca em Profundidade", caminho, custo, visitados))
 
-    # caminho, custo, visitados = busca_a_estrela(mapa, heuristica, origem, destino)
-    # resultados.append(("Busca A*", caminho, custo, visitados))
+    caminho, custo, visitados = busca_a_estrela(mapa, heuristica, origem, destino)
+    resultados.append(("Busca A*", caminho, custo, visitados))
     print(resultados)
     return resultados
 
