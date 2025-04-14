@@ -43,19 +43,20 @@
                     <h2>Resultados de {{ origem }} até {{ destino }}</h2>
                     <h3>{{ resultados[0][0] }}</h3>
                     <p>Cidades do trajeto escolhido: {{resultados[0][1] | join(', ') }}.</p>
-                    <p>Distância do trajeto: {{resultados[0][2] }} Km.</p>
+                    <p>*Distância do trajeto: {{resultados[0][2] }} Km.</p>
                     <p>Total de cidades visitadas pelo método: {{resultados[0][3] }} cidades.</p>
                     <hr>
                     <h3>{{ resultados[1][0] }}</h3>
                     <p>Cidades do trajeto escolhido: {{resultados[1][1] | join(', ') }}.</p>
-                    <p>Distância do trajeto: {{resultados[1][2] }} Km.</p>
+                    <p>*Distância do trajeto: {{resultados[1][2] }} Km.</p>
                     <p>Total de cidades visitadas pelo método: {{resultados[1][3] }} cidades.</p>
                     <hr>
                     <h3>{{ resultados[2][0] }}</h3>
                     <p>Cidades do trajeto escolhido: {{resultados[2][1] | join(', ') }}.</p>
-                    <p>Distância do trajeto: {{resultados[2][2] }} Km.</p>
+                    <p>*Distância do trajeto: {{resultados[2][2] }} Km.</p>
                     <p>Total de cidades visitadas pelo método: {{resultados[2][3] }} cidades.</p>
                     <hr>
+                    <p class="fonte">*Distâncias calculadas com base no site <a href="https://www.goodway.com.br/distancias.htm" target="_blank">Goodway Cargo Transportes nacionais e Internacionais</a></p>
                 </div>
                 {% endif %}
         </div>

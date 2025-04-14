@@ -52,7 +52,7 @@ main {
 }
 img{
     display: block;
-    max-width: 80%;
+    max-width: 90%;
     height: auto;
     object-fit: contain; /* ou 'cover' se quiser preencher */
 }
@@ -73,6 +73,8 @@ form {
     align-content: center;
 }
 select {
+    width: 180px;
+    height: auto;
     padding: 5px;
     border-radius: 5px;
     margin: 0 10px 5px;
@@ -81,6 +83,8 @@ select:focus {
     border-color: #FFC000;
 }
 button {
+    width: 150px;
+    height: auto;
     background-color: #FFC000;
     color: #0f0f0f;
     padding: 10px;
@@ -117,6 +121,9 @@ button:hover {
 .resultados hr {
     border: 1px solid gray;
     margin-bottom: 10px;
+}
+.fonte {
+    font-size: 12px;
 }
 footer {
     background: #FFC000;

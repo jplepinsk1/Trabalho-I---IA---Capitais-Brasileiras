@@ -3,7 +3,7 @@ from .logic import executar_buscas
 
 main_bp = Blueprint('main', __name__)
 
-capitais = ('Aracaju', 'Belém', 'Belo Horizonte', 'Boa Vista', 'Brasília','Campo Grande', 'Cuiabá', 'Curitiba', 'Florianópolis', 'Fortaleza', 'Goiânia', 'João Pessoa', 'Macapá', 'Maceió', 'Manaus','Natal', 'Palmas', 'Porto Alegre', 'Porto Velho', 'Recife', 'Rio Branco', 'Rio de Janeiro', 'Salvador', 'São Luís', 'São Paulo','Teresina', 'Vitória')
+capitais = ('Aracaju', 'Belém', 'Belo Horizonte', 'Boa Vista', 'Brasília','Campo Grande', 'Cuiabá', 'Curitiba', 'Florianópolis', 'Fortaleza', 'Goiânia', 'João Pessoa', 'Maceió', 'Manaus','Natal', 'Palmas', 'Porto Alegre', 'Porto Velho', 'Recife', 'Rio Branco', 'Rio de Janeiro', 'Salvador', 'São Luís', 'São Paulo','Teresina', 'Vitória')
 
 
 @main_bp.route('/', methods=['GET','POST'])
