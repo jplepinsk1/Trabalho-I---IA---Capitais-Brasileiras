@@ -56,7 +56,7 @@
                     <p>*Distância do trajeto: {{resultados[2][2] }} Km.</p>
                     <p>Total de cidades visitadas pelo método: {{resultados[2][3] }} cidades.</p>
                     <p style="font-size: 13px; color: #666;">
-                        *A Busca A* leva em consideração a distância percorrida (custo acumulado) e uma estimativa baseada na distância geográfica e penalidade da malha rodoviária para priorizar os caminhos mais promissores.
+                        A Busca A* (A Star) considera não apenas a distância rodoviária percorrida (custo acumulado), mas também uma heurística baseada na distância geográfica entre as cidades (calculada pela fórmula de Haversine) e uma penalidade associada à qualidade da malha rodoviária estadual, priorizando assim os caminhos mais promissores para alcançar o destino.
                     </p>
                     <hr>
                     <h2>Comparativo Geral</h2>

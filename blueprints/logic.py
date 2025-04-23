@@ -14,9 +14,6 @@ Este projeto implementa algoritmos de busca em grafos (Busca em Largura, Busca e
 para cálculo de rotas entre capitais brasileiras, considerando distância rodoviária, heurística de distância 
 geográfica (fórmula de Haversine) e penalidade baseada na qualidade da malha rodoviária.
 
-Links do Projeto:
-- 📄 Arquivo Python: (inserir link do arquivo ou repositório)
-- 📦 GitHub: https://github.com/seudominio/seurepositorio
 - 🌐 Aplicação Web (Vercel): https://trabalho-i-ia-capitais-brasileiras.vercel.app/
 
 Abril/2025
