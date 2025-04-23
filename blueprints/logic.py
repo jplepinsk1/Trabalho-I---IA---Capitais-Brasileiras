@@ -1,7 +1,59 @@
+"""
+Trabalho de Inteligência Artificial - Métodos de Busca
+Universidade Tecnológica Federal do Paraná (UTFPR)
+Disciplina: Inteligência Artificial - Programa de Mestrado
+Professor: Prof. Dr. André Pinz Borges
+
+Desenvolvido por:
+- Gabriel Inácio de Oliveira
+- João Paulo de Macedo Lepinsk
+- Maíra Báz Sanmartin
+
+Descrição:
+Este projeto implementa algoritmos de busca em grafos (Busca em Largura, Busca em Profundidade e Busca A*) 
+para cálculo de rotas entre capitais brasileiras, considerando distância rodoviária, heurística de distância 
+geográfica (fórmula de Haversine) e penalidade baseada na qualidade da malha rodoviária.
+
+Links do Projeto:
+- 📄 Arquivo Python: (inserir link do arquivo ou repositório)
+- 📦 GitHub: https://github.com/seudominio/seurepositorio
+- 🌐 Aplicação Web (Vercel): https://trabalho-i-ia-capitais-brasileiras.vercel.app/
+
+Abril/2025
+"""
 from collections import deque
 import heapq
 from math import radians, sin, cos, sqrt, atan2
-from blueprints.grafo import mapa
+
+# Representação do mapa com algumas capitais e distâncias
+mapa = {
+    'Natal': {'João Pessoa': 185, 'Fortaleza': 537},
+    'João Pessoa': {'Recife': 120, 'Natal': 185},
+    'Recife': {'João Pessoa': 120, 'Maceió': 285, 'Teresina': 1137},
+    'Maceió': {'Recife': 285, 'Aracaju': 294},
+    'Aracaju': {'Maceió': 294, 'Salvador': 356},
+    'Salvador': {'Aracaju': 356, 'Teresina': 1163, 'Vitória': 1202, 'Belo Horizonte': 1372, 'Brasília': 1446, 'Palmas': 1454},
+    'Fortaleza': {'Natal': 537, 'Teresina': 634, 'São Luís': 1070},
+    'Teresina': {'São Luís': 446, 'Fortaleza': 634, 'Recife': 1137, 'Salvador': 1163, 'Palmas': 1401},
+    'São Luís': {'Teresina': 446, 'Belém': 806, 'Fortaleza': 1070},
+    'Belém': {'São Luís': 806, 'Palmas': 1283, 'Manaus': 5298},
+    'Boa Vista': {'Manaus': 785},
+    'Palmas': {'Brasília': 973, 'Belém':1283, 'Teresina': 1401, 'Salvador': 1454, 'Cuiabá': 1784, 'Manaus': 4141},
+    'Manaus': {'Boa Vista': 785, 'Porto Velho': 901, 'Palmas': 4141, 'Belém': 5298},
+    'Porto Velho': {'Rio Branco': 544, 'Manaus': 901, 'Cuiabá': 1456},
+    'Rio Branco': {'Porto Velho': 544},
+    'Brasília': {'Goiânia': 209, 'Belo Horizonte': 716, 'Palmas': 973, 'Cuiabá': 1133, 'Salvador': 1446},
+    'Cuiabá': {'Campo Grande': 694, 'Goiânia': 934, 'Brasília': 1133, 'Porto Velho': 1456, 'Palmas': 1784},
+    'Campo Grande': {'Cuiabá': 694, 'Goiânia': 935, 'Curitiba': 991, 'São Paulo': 1014},
+    'Goiânia': {'Brasília': 209, 'Belo Horizonte': 906, 'São Paulo': 926, 'Cuiabá': 934, 'Campo Grande': 935},
+    'Vitória': {'Rio de Janeiro': 521, 'Belo Horizonte': 524, 'Salvador': 1202},
+    'Belo Horizonte': {'Rio de Janeiro': 434, 'São Paulo': 586, 'Vitória': 524, 'Brasília': 716},
+    'Rio de Janeiro': {'São Paulo': 408, 'Belo Horizonte': 434, 'Vitória': 521},
+    'São Paulo': {'Curitiba': 408, 'Rio de Janeiro': 429, 'Belo Horizonte': 586, 'Goiânia': 926, 'Campo Grande': 1014},
+    'Curitiba': {'Florianópolis': 300, 'São Paulo': 408, 'Campo Grande': 991},
+    'Florianópolis': {'Curitiba': 300, 'Porto Alegre': 476},
+    'Porto Alegre': {'Florianópolis': 476}
+}
 
 # Mapeamento de capital para estado
 capital_estado = {
@@ -108,10 +160,10 @@ def busca_a_estrela(mapa, origem, destino):
 def executar_buscas(origem, destino):
     resultados = []
     caminho, custo, visitados = busca_largura(mapa, origem, destino)
-    resultados.append(("Busca em Largura (BFS)", caminho, custo, visitados))
+    resultados.append(("Busca em Largura", caminho, custo, visitados))
 
     caminho, custo, visitados = busca_profundidade(mapa, origem, destino)
-    resultados.append(("Busca em Profundidade (DFS)", caminho, custo, visitados))
+    resultados.append(("Busca em Profundidade", caminho, custo, visitados))
 
     caminho, custo, visitados = busca_a_estrela(mapa, origem, destino)
     resultados.append(("Busca A*", caminho, custo, visitados))
@@ -150,4 +202,5 @@ def executar_buscas(origem, destino):
 
 #     for metodo, caminho, custo, visitados in resultados:
 #         print("{:<25} {:<15} {:<20}".format(metodo, custo, visitados))
+
 
