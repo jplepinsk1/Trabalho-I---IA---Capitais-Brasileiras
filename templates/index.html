@@ -55,6 +55,25 @@
                     <p>Cidades do trajeto escolhido: {{resultados[2][1] | join(', ') }}.</p>
                     <p>*Distância do trajeto: {{resultados[2][2] }} Km.</p>
                     <p>Total de cidades visitadas pelo método: {{resultados[2][3] }} cidades.</p>
+                    <p style="font-size: 13px; color: #666;">
+                        *A Busca A* leva em consideração a distância percorrida (custo acumulado) e uma estimativa baseada na distância geográfica e penalidade da malha rodoviária para priorizar os caminhos mais promissores.
+                    </p>
+                    <hr>
+                    <h2>Comparativo Geral</h2>
+                    <table border="1" cellpadding="5" cellspacing="0">
+                        <tr>
+                            <th>Método</th>
+                            <th>Distância (km)</th>
+                            <th>Cidades visitadas</th>
+                        </tr>
+                        {% for metodo, caminho, custo, visitados in resultados %}
+                        <tr>
+                            <td>{{ metodo }}</td>
+                            <td>{{ custo }}</td>
+                            <td>{{ visitados }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
                     <hr>
                     <p class="fonte">*Distâncias calculadas com base no site <a href="https://www.goodway.com.br/distancias.htm" target="_blank">Goodway Cargo Transportes nacionais e Internacionais</a></p>
                 </div>

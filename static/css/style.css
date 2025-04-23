@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 html, body {
-    height: 100%;
+    min-height: 100%;
 }
 
 body {
@@ -17,7 +17,8 @@ body {
     min-height: 100vh;
     font-size: 16px;
 }
-header {    
+header {   
+    height: 8vh; 
     background: #FFC000;
     background: linear-gradient(90deg,rgba(255, 192, 0, 1) 0%, rgba(255, 206, 56, 1) 59%, rgba(255, 255, 255, 1) 100%);
     color: #0f0f0f;
@@ -31,7 +32,7 @@ h1 {
 }   
 main {
     flex: 1;
-    height: 100%;
+    min-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,11 +41,9 @@ main {
 .container {
     width: 85%;
     display: flex;
-    height: 100%;
 }
 .col {
     width: 50%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -52,8 +51,8 @@ main {
 }
 img{
     display: block;
-    max-width: 90%;
-    height: auto;
+    max-width: auto;
+    height: 78vh;
     object-fit: contain; /* ou 'cover' se quiser preencher */
 }
 .form {
@@ -126,7 +125,37 @@ button:hover {
 .fonte {
     font-size: 12px;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+table th {
+    background-color: #f4f4f4;
+}
+
+table tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table td {
+    font-size: 14px;
+}
+
 footer {
+    height: 10vh;
     background: #FFC000;
     background: linear-gradient(90deg,rgba(255, 192, 0, 1) 0%, rgba(255, 206, 56, 1) 59%, rgba(255, 255, 255, 1) 100%);
     color: #0f0f0f;
