@@ -18,11 +18,12 @@ geográfica (fórmula de Haversine) e penalidade baseada na qualidade da malha r
 
 Abril/2025
 """
+
 from collections import deque
 import heapq
 from math import radians, sin, cos, sqrt, atan2
 
-# Representação do mapa com algumas capitais e distâncias
+
 mapa = {
     'Natal': {'João Pessoa': 185, 'Fortaleza': 537},
     'João Pessoa': {'Recife': 120, 'Natal': 185},
@@ -52,7 +53,7 @@ mapa = {
     'Porto Alegre': {'Florianópolis': 476}
 }
 
-# Mapeamento de capital para estado
+
 capital_estado = {
     'Rio Branco': 'AC', 'Maceió': 'AL', 'Manaus': 'AM', 'Salvador': 'BA',
     'Fortaleza': 'CE', 'Brasília': 'DF', 'Vitória': 'ES', 'Goiânia': 'GO', 'São Luís': 'MA',
@@ -62,7 +63,7 @@ capital_estado = {
     'São Paulo': 'SP', 'Aracaju': 'SE', 'Palmas': 'TO'
 }
 
-# Penalidade com base na qualidade da malha rodoviária
+
 penalidade_estado = {
     "SP": 240.0, "AL": 1360.0, "DF": 1440.0, "MS": 1460.0, "GO": 1640.0, "RS": 1640.0, "SC": 1700.0,
     "ES": 1740.0, "SE": 1760.0, "RN": 1790.0, "PB": 1850.0, "PR": 1850.0, "RJ": 1890.0, "CE": 1930.0,
@@ -70,7 +71,7 @@ penalidade_estado = {
     "TO": 2120.0, "AC": 2150.0, "MG": 2190.0, "MT": 2250.0, "AP": 2440.0, "AM": 3180.0
 }
 
-# Coordenadas geográficas para distância em linha reta (Haversine)
+
 coordenadas = {
     'Rio Branco': (-9.97499, -67.8243), 'Maceió': (-9.66599, -35.735), 'Manaus': (-3.10194, -60.025),
     'Salvador': (-12.9718, -38.5011), 'Fortaleza': (-3.71722, -38.5433), 'Brasília': (-15.7801, -47.9292),
@@ -83,7 +84,7 @@ coordenadas = {
     'Aracaju': (-10.9111, -37.0717), 'Palmas': (-10.2398, -48.3558)
 }
 
-# Função Haversine
+
 def haversine(cidade1, cidade2):
     lat1, lon1 = coordenadas[cidade1]
     lat2, lon2 = coordenadas[cidade2]
@@ -94,7 +95,7 @@ def haversine(cidade1, cidade2):
     c = 2 * atan2(sqrt(a), sqrt(1 - a))
     return R * c
 
-# Busca em Largura BFS
+
 def busca_largura(mapa, origem, destino):
     fila = deque([(origem, [origem], 0)])
     visitados = set()
@@ -104,15 +105,11 @@ def busca_largura(mapa, origem, destino):
             return caminho, custo, len(visitados)
         visitados.add(atual)
         for vizinho, distancia in mapa[atual].items():
-            estado = capital_estado.get(vizinho, "")
-            penalidade = penalidade_estado.get(estado, 0)
-            distancia_h = haversine(vizinho, destino)
-            h = distancia_h + penalidade
             if vizinho not in visitados:
                 fila.append((vizinho, caminho + [vizinho], custo + distancia))
     return None, float('inf'), len(visitados)
 
-# Busca em Largura DFS
+
 def busca_profundidade(mapa, origem, destino):
     pilha = [(origem, [origem], 0)]
     visitados = set()
@@ -122,15 +119,11 @@ def busca_profundidade(mapa, origem, destino):
             return caminho, custo, len(visitados)
         visitados.add(atual)
         for vizinho, distancia in mapa[atual].items():
-            estado = capital_estado.get(vizinho, "")
-            penalidade = penalidade_estado.get(estado, 0)
-            distancia_h = haversine(vizinho, destino)
-            h = distancia_h + penalidade
             if vizinho not in visitados:
                 pilha.append((vizinho, caminho + [vizinho], custo + distancia))
     return None, float('inf'), len(visitados)
 
-# Busca A*
+
 def busca_a_estrela(mapa, origem, destino):
     fila = [(0, 0, origem, [origem])]
     visitados = set()
@@ -153,7 +146,7 @@ def busca_a_estrela(mapa, origem, destino):
     
     return None, float('inf'), len(visitados)
 
-# Executar todas as buscas
+
 def executar_buscas(origem, destino):
     resultados = []
     caminho, custo, visitados = busca_largura(mapa, origem, destino)
@@ -180,7 +173,7 @@ def executar_buscas(origem, destino):
 #     resultados.append(("BUSCA EM LARGURA (BFS)", caminho, custo, visitados))
 
 #     caminho, custo, visitados = busca_profundidade(mapa, origem, destino)
-#     resultados.append(("BUSCA EM LARGURA (DFS)", caminho, custo, visitados))
+#     resultados.append(("BUSCA EM PROFUNDIDADE (DFS)", caminho, custo, visitados))
 
 #     caminho, custo, visitados = busca_a_estrela(mapa, origem, destino)
 #     resultados.append(("BUSCA A*", caminho, custo, visitados))
@@ -193,7 +186,7 @@ def executar_buscas(origem, destino):
 #         print(f"Distância total percorrida: {custo} km")
 #         print(f"Número de cidades visitadas: {visitados}")
 
-#     # Comparativo geral
+
 #     print("\n=== COMPARATIVO GERAL ===")
 #     print("{:<25} {:<15} {:<20}".format("Método", "Distância (km)", "Cidades visitadas"))
 
