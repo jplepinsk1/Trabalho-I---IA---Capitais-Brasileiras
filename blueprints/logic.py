@@ -15,6 +15,7 @@ para cálculo de rotas entre capitais brasileiras, considerando distância rodov
 geográfica (fórmula de Haversine) e penalidade baseada na qualidade da malha rodoviária.
 
 - 🌐 Aplicação Web (Vercel): https://trabalho-i-ia-capitais-brasileiras.vercel.app/
+- 💼 Repositório no GitHub: https://github.com/jplepinsk1/Trabalho-I---IA---Capitais-Brasileiras
 
 Abril/2025
 """
